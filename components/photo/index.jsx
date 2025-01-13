@@ -19,14 +19,14 @@ const Photo = () => {
             transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' },
           }}
         >
-          <div className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] absolute'>
+          <div className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] absolute mix-blend-difference '>
             <Image
-              src='/assets/3.png'
+              src='/assets/karanova.png'
               alt=''
               fill
               quality={100}
               priority
-              className='object-contain'
+              className='object-contain p-8 border-1  rounded-full'
             />
           </div>
         </motion.div>
@@ -47,14 +47,14 @@ const Photo = () => {
             strokeLinejoin='round'
             initial={{ strokeDasharray: '24 10 0 0' }}
             animate={{
-                strokeDasharray: ["15 120 25 25", "16 25 92 72", "4 250 22 22"],
-                rotate: [120, 360],
-                }}
-                transition={{
-                duration: 20,
-                repeat: Infinity,
-                repeatType: "reverse",
-                }}
+              strokeDasharray: ['15 120 25 25', '16 25 92 72', '4 250 22 22'],
+              rotate: [120, 360],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              repeatType: 'reverse',
+            }}
           />
         </motion.svg>
       </motion.div>
