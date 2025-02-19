@@ -1,3 +1,39 @@
+# Personal Website
+
+## Environment Variables
+
+Bu proje çalışmak için aşağıdaki environment değişkenlerine ihtiyaç duyar:
+
+1. `.env.example` dosyasını `.env` olarak kopyalayın:
+```bash
+cp .env.example .env
+```
+
+2. `.env` dosyasındaki değişkenleri kendi değerlerinizle güncelleyin:
+- `NEXT_PUBLIC_EMAILJS_SERVICE_ID`: EmailJS servis ID'niz
+- `NEXT_PUBLIC_EMAILJS_NOTIFICATION_TEMPLATE_ID`: Bildirim template ID'si
+- `NEXT_PUBLIC_EMAILJS_AUTO_REPLY_TEMPLATE_ID`: Otomatik yanıt template ID'si
+- `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`: EmailJS public key'iniz
+
+## Kurulum
+
+```bash
+# Bağımlılıkları yükleyin
+npm install
+
+# Geliştirme sunucusunu başlatın
+npm run dev
+```
+
+## Canlı Ortam
+
+Bu proje Vercel üzerinde host edilmektedir. Environment değişkenleri Vercel Dashboard üzerinden yönetilmektedir. Yeni bir deploy yaparken:
+
+1. Vercel Dashboard'a gidin
+2. Proje ayarlarına girin
+3. "Settings" > "Environment Variables" bölümünden gerekli değişkenleri ekleyin
+4. Değişiklikleri kaydedip yeniden deploy edin
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

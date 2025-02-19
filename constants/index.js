@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 export const links = [
   { name: 'Home', path: '/' },
@@ -12,28 +12,36 @@ export const socials = [
   {
     name: 'Github',
     icon: <FaGithub />,
-    path: '',
+    path: 'https://github.com/tolunaytezcan',
   },
   {
     name: 'LinkedIn',
     icon: <FaLinkedin />,
-    path: '',
+    path: 'https://www.linkedin.com/in/tolunaytezcan/',
   },
   {
     name: 'Email',
     icon: <FaEnvelope />,
-    path: '',
+    path: '/contact',
   },
   {
-    name: 'Twitter',
-    icon: <FaTwitter />,
-    path: '',
+    name: 'Instagram',
+    icon: <FaInstagram />,
+    path: 'https://www.instagram.com/tolunaytezcan_/',
   },
 ];
 
 export const stats = [
-  { name: 'Years Experience', value: 5 },
-  { name: 'Clients', value: 5 },
-  { name: 'Experience', value: 3 },
-  { name: 'Awards', value: 2 },
+  { 
+    name: 'Years Experience', 
+    value: 5 
+  },
+  { 
+    name: 'Enterprise Projects', 
+    value: 6 
+  },
+  { 
+    name: 'Tech Stack', 
+    value: 15 
+  },
 ];
