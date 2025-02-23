@@ -21,6 +21,26 @@ export const metadata = {
   keywords: ['Frontend Engineer', 'React Developer', 'React Native Developer', 'Next.js Developer', 'TypeScript', 'JavaScript', 'Web Development', 'Mobile Development'],
   authors: [{ name: 'Tolunay Tezcan' }],
   creator: 'Tolunay Tezcan',
+  icons: {
+    icon: [
+      {
+        url: '/code.svg',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/code-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/code-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    shortcut: '/code.svg',
+    apple: '/code.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
