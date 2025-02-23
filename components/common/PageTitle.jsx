@@ -1,6 +1,6 @@
 const PageTitle = ({ title, subtitle }) => {
   return (
-    <div className="text-center py-8">
+    <div className="text-center pb-8">
       <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-[#00ff99]">
         {title}
       </h1>

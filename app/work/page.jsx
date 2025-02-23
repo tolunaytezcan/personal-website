@@ -99,7 +99,7 @@ const ProjectCard = ({ project }) => {
 
 export default function Work() {
   return (
-    <div className="min-h-screen w-full flex items-start justify-center pt-8">
+    <div className="min-h-screen w-full flex items-start justify-center">
       <div className="container mx-auto px-4 lg:px-8">
         <AnimatedContainer>
           <div className="w-full max-w-[1440px] mx-auto">
