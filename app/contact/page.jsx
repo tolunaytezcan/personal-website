@@ -126,7 +126,7 @@ const Contact = () => {
                 </div>
 
                 <div className="relative group">
-                  <div className="absolute top-3 left-4 pointer-events-none text-accent group-focus-within:text-[#00ff99] transition-colors">
+                  <div className="absolute top-5 left-4 pointer-events-none text-accent group-focus-within:text-[#00ff99] transition-colors">
                     <FiMessageSquare className="h-5 w-5" />
                   </div>
                   <textarea

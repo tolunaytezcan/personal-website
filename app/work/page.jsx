@@ -10,17 +10,17 @@ import Link from 'next/link';
 const projects = [
   {
     id: 1,
-    title: 'Hepsiburada Checkout',
-    description: 'Redesigned and developed the new checkout experience (New OPC) for Hepsiburada, one of Turkey\'s largest e-commerce platforms. The project significantly improved user experience and performance.',
-    image: '/assets/hepsiburada-checkout.png',
-    technologies: ['React', 'TypeScript', 'Zustand', 'Micro Frontends', 'Voltran'],
+    title: 'Hepsiburada Basket & Checkout Pages',
+    description: 'Redesigned and developed the basket and checkout experience for Hepsiburada, one of Turkey\'s largest e-commerce platforms. The projects significantly improved user experience and performance.',
+    image: '/assets/hepsiburada.png',
+    technologies: ['React', 'TypeScript', 'Zustand', 'Micro Frontends', 'SCSS'],
     liveUrl: 'https://checkout.hepsiburada.com',
   },
   {
     id: 2,
-    title: 'GittiGidiyor Product Detail',
+    title: 'GittiGidiyor Product Detail Page',
     description: 'Built the new product detail page for GittiGidiyor (eBay Turkey) using modern technologies and atomic design principles. Implemented product comparison and review features.',
-    image: '/assets/gittigidiyor-product.png',
+    image: '/assets/gg-pdp-page.jpg',
     technologies: ['Next.js', 'TypeScript', 'GraphQL', 'Apollo Client', 'SSR/SSG'],
     liveUrl: 'https://www.gittigidiyor.com',
   },
@@ -28,15 +28,18 @@ const projects = [
     id: 3,
     title: 'Ziraat Bank Financial Screens',
     description: 'Developed financial interface screens for TC Ziraat Bank, Turkey\'s largest state-owned bank. The project focused on modernizing the bank\'s digital presence.',
-    image: '/assets/ziraat-screens.png',
+    image: '/assets/ziraat.png',
     technologies: ['React', 'TypeScript', 'Redux', 'Styled Components'],
+    liveUrl: 'https://bireysel.ziraatbank.com.tr/',
+
   },
   {
     id: 4,
     title: 'Digital Wallet Apps',
-    description: 'Developed multiple digital wallet mobile applications (Hayat and Poca) using React Native. These apps are currently live and being used by customers.',
-    image: '/assets/wallet-apps.png',
-    technologies: ['React Native', 'Redux Toolkit', 'Context API', 'SASS'],
+    description: 'Developed multiple digital wallet mobile applications (Hayhay, Poca and BaskentGaz) using React Native. These apps are currently live and being used by customers.',
+    image: '/assets/hayhay.png',
+    technologies: ['React Native', 'Redux Toolkit', 'Context API', 'Styled Components'],
+    liveUrl: "https://www.hayhay.com/"
   }
 ];
 
@@ -78,7 +81,7 @@ const ProjectCard = ({ project }) => {
           )}
         </div>
       </div>
-      
+
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
         <p className="text-neutral-400 mb-4">{project.description}</p>
@@ -103,11 +106,11 @@ export default function Work() {
       <div className="container mx-auto px-4 lg:px-8">
         <AnimatedContainer>
           <div className="w-full max-w-[1440px] mx-auto">
-            <PageTitle 
-              title="Projects" 
-              subtitle="Some Projects I've Built" 
+            <PageTitle
+              title="Projects"
+              subtitle="Some Projects I've Built"
             />
-            
+
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
