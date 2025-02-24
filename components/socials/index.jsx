@@ -7,10 +7,9 @@ const Socials = () => {
   return (
     <div className='flex gap-6'>
       {socials.map(social => {
-        // Eğer path http ile başlıyorsa veya github/linkedin/instagram içeriyorsa, harici link olarak işle
-        const isExternalLink = social.path.startsWith('http') || 
-          social.path.includes('github') || 
-          social.path.includes('linkedin') || 
+        const isExternalLink = social.path.startsWith('http') ||
+          social.path.includes('github') ||
+          social.path.includes('linkedin') ||
           social.path.includes('instagram');
 
         if (isExternalLink) {

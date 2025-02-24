@@ -4,8 +4,7 @@ export const links = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
   { name: 'Resume', path: '/resume' },
-  { name: 'Work', path: '/work' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Work', path: '/work' }
 ];
 
 export const socials = [
@@ -32,16 +31,19 @@ export const socials = [
 ];
 
 export const stats = [
-  { 
-    name: 'Years Experience', 
-    value: 5 
+  {
+    name: 'Years Experience',
+    value: 5,
+    suffix: '+'
   },
-  { 
-    name: 'Enterprise Projects', 
-    value: 6 
+  {
+    name: 'Users serving projects',
+    value: 50,
+    suffix: 'M+'
   },
-  { 
-    name: 'Tech Stack', 
-    value: 15 
+  {
+    name: 'Performance & Accessibility',
+    value: 100,
+    suffix: '%'
   },
 ];

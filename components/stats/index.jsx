@@ -17,12 +17,12 @@ const Stats = () => {
                 end={item.value}
                 duration={3}
                 delay={2}
+                suffix={item.suffix}
                 className='text-4xl xl:text-6xl font-extrabold'
               />
               <p
-                className={`${
-                  item.name.length < 15 ? 'max-w-[100px]' : 'max-w-[150px]'
-                } leading-snug text-white/80`}
+                className={`${item.name.length < 15 ? 'max-w-[100px]' : 'max-w-[150px]'
+                  } leading-snug text-white/80`}
               >
                 {item.name}
               </p>
