@@ -4,12 +4,15 @@ import { motion } from 'framer-motion';
 
 const MatrixText = memo(({ text, className }) => {
     const [displayText, setDisplayText] = useState('');
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
+    const characters = 'abcdefghijklmnopqrstuwxvyz!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const STAIR_TRANSITION_DURATION = 1000; // StairTransition'ın tamamlanma süresi (ms)
+    const ANIMATION_INTERVAL = 20;
+    const RESET_INTERVAL = 10000;
 
     const updateText = useCallback((currentIndex, iterations) => {
         setDisplayText(prev => {
             const arr = prev.split('');
-            
             if (currentIndex < text.length) {
                 if (iterations < 3) {
                     arr[currentIndex] = characters[Math.floor(Math.random() * characters.length)];
@@ -17,45 +20,68 @@ const MatrixText = memo(({ text, className }) => {
                     arr[currentIndex] = text[currentIndex];
                 }
             }
-            
             return arr.join('');
         });
     }, [text, characters]);
 
     useEffect(() => {
-        let currentIndex = 0;
-        let iterations = 0;
-        let animationFrame;
+        // StairTransition'ın bitmesini bekle
+        const timer = setTimeout(() => {
+            setShouldStartAnimation(true);
+        }, STAIR_TRANSITION_DURATION);
 
-        const animate = () => {
-            updateText(currentIndex, iterations);
-            iterations++;
+        return () => clearTimeout(timer);
+    }, []);
 
-            if (iterations > 3) {
-                iterations = 0;
-                currentIndex++;
-            }
+    useEffect(() => {
+        if (!shouldStartAnimation) return;
 
-            if (currentIndex < text.length) {
-                animationFrame = requestAnimationFrame(animate);
-            }
+        const startAnimation = () => {
+            let currentIndex = 0;
+            let iterations = 0;
+            let timeoutId;
+
+            const animate = () => {
+                updateText(currentIndex, iterations);
+                iterations++;
+
+                if (iterations > 3) {
+                    iterations = 0;
+                    currentIndex++;
+                }
+
+                if (currentIndex < text.length) {
+                    timeoutId = setTimeout(animate, ANIMATION_INTERVAL);
+                }
+            };
+
+            animate();
+
+            return () => {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+            };
         };
-
-        animationFrame = requestAnimationFrame(animate);
+        let cleanup = startAnimation();
+        const resetInterval = setInterval(() => {
+            if (cleanup) cleanup();
+            setDisplayText('');
+            cleanup = startAnimation();
+        }, RESET_INTERVAL);
 
         return () => {
-            if (animationFrame) {
-                cancelAnimationFrame(animationFrame);
-            }
+            if (cleanup) cleanup();
+            clearInterval(resetInterval);
         };
-    }, [text, updateText]);
+    }, [text, updateText, shouldStartAnimation]);
 
     return (
         <motion.span
             className={className}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, delay: STAIR_TRANSITION_DURATION / 1000 }}
         >
             {displayText || text.replace(/./g, ' ')}
         </motion.span>
