@@ -9,6 +9,7 @@ import { FiDownload, FiArrowRight } from 'react-icons/fi';
 import AnimatedContainer from '@/components/common/AnimatedContainer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import MatrixText from '@/components/matrix-text';
 
 const Home = () => {
   return (
@@ -38,12 +39,12 @@ const Home = () => {
                   <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 leading-tight">
                     Hello, I&apos;m{' '}
                     <span className="text-[#00ff99] relative">
-                      Tolunay Tezcan
+                      <MatrixText text="Tolunay Tezcan" className="inline-block" />
                       <motion.span
                         className="absolute -bottom-2 left-0 w-full h-1 bg-[#00ff99]/30"
                         initial={{ width: 0 }}
                         animate={{ width: '100%' }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
+                        transition={{ delay: 2.5, duration: 2.8 }}
                       />
                     </span>
                   </h1>
