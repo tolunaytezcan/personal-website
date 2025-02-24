@@ -1,52 +1,67 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { motion } from 'framer-motion';
 
-const MatrixText = ({ text, className }) => {
+const MatrixText = memo(({ text, className }) => {
     const [displayText, setDisplayText] = useState('');
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+    const updateText = useCallback((currentIndex, iterations) => {
+        setDisplayText(prev => {
+            const arr = prev.split('');
+            
+            if (currentIndex < text.length) {
+                if (iterations < 3) {
+                    arr[currentIndex] = characters[Math.floor(Math.random() * characters.length)];
+                } else {
+                    arr[currentIndex] = text[currentIndex];
+                }
+            }
+            
+            return arr.join('');
+        });
+    }, [text, characters]);
 
     useEffect(() => {
         let currentIndex = 0;
         let iterations = 0;
-        const maxIterations = 3;
+        let animationFrame;
 
-        const interval = setInterval(() => {
-            setDisplayText(prev => {
-                const arr = prev.split('');
+        const animate = () => {
+            updateText(currentIndex, iterations);
+            iterations++;
 
-                if (currentIndex < text.length) {
-                    if (iterations < maxIterations) {
-                        arr[currentIndex] = characters[Math.floor(Math.random() * characters.length)];
-                        iterations++;
-                    } else {
-                        arr[currentIndex] = text[currentIndex];
-                        currentIndex++;
-                        iterations = 0;
-                    }
-                }
-
-                return arr.join('');
-            });
-
-            if (currentIndex >= text.length && iterations >= maxIterations) {
-                clearInterval(interval);
+            if (iterations > 3) {
+                iterations = 0;
+                currentIndex++;
             }
-        }, 70);
 
-        return () => clearInterval(interval);
-    }, [text]);
+            if (currentIndex < text.length) {
+                animationFrame = requestAnimationFrame(animate);
+            }
+        };
+
+        animationFrame = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+        };
+    }, [text, updateText]);
 
     return (
         <motion.span
             className={className}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
         >
             {displayText || text.replace(/./g, ' ')}
         </motion.span>
     );
-};
+});
+
+MatrixText.displayName = 'MatrixText';
 
 export default MatrixText; 
